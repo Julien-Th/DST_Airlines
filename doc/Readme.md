@@ -15,15 +15,15 @@ First steps :
 
 ## Developer's guide
 ### Develop on your branch
-- update your main branch : `git checkout dev` then `git pull`
+- update your main branch : `git checkout main` then `git pull`
 - create a new branch : `git branch feature\my_new_feature`
 - go on your branch : `git checkout feature\my_new_feature`
 - develop your things
 - (optional) if someone has pushed some devs on the main branch since you created your branch, you need to include these devs by rebasing :
-    - `git checkout dev`
+    - `git checkout main`
     - `git pull`
     - `git checkout feature\my_new_feature`
-    - `git rebase dev`
+    - `git rebase main`
     - if needed, correct the conflicts
 - once you've finished your feature :
     - `git add .`
