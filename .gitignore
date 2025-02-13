@@ -2,5 +2,5 @@
 .ipynb_checkpoints
 
 # directories
-data
-logs
+/data/
+/logs/
