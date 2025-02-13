@@ -15,6 +15,6 @@ Steps to get passenger flights data :
 ```
 - copy your token and replace it in `src/data/lufthansa/get_lufthansa_data.py` on line 4
 - execute ```
-    python3 get_lufthansa_data.py > ~/DST_Airlines/data/lufthansa/lufthansa_passenger.json
+    python3 get_flight_schedules.py
 ```
-- see the result in `data/lufthansa/lufthansa_passenger.json`
+- see the result in `data/lufthansa/horaires_vols.json`
