@@ -3,7 +3,7 @@ import json
 import time
 
 # Token d'accès obtenu précédemment
-API_KEY = 'trvzrdj7xkzwyex9uqan75p9'
+API_KEY = 'avrb353r2anaygxtj5mjdqft'
 
 # URL de l'API "Countries"
 url = "https://api.lufthansa.com/v1/mds-references/airports"
