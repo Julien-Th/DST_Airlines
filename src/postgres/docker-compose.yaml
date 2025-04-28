@@ -19,3 +19,4 @@ services:
       PGADMIN_DEFAULT_PASSWORD: datascientest
     ports:
       - "5050:80"
+      
