@@ -4,3 +4,4 @@
 # directories
 /data/
 /logs/
+/airflow/logs/
