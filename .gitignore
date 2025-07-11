@@ -3,5 +3,10 @@
 
 # directories
 /data/
-/logs/
-/airflow/logs/
+**/logs
+
+#logs airflow
+airflow/logs/
+*.log
+*.pyc
+
