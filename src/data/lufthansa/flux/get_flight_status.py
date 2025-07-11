@@ -1,24 +1,43 @@
 import requests
 import json
 import time
+import os
+import sys
 
-# Token d'accès obtenu précédemment
-API_KEY = '9e3mggjt5u3rknajcvep8fr3'
+# 🔹 Récupérer la date passée en argument
+if len(sys.argv) < 2:
+    print("❌ Erreur : veuillez fournir une date (ex: 2025-06-25) en argument.")
+    sys.exit(1)
+
+date = sys.argv[1]  # Exemple : 2025-06-25
+
+# 🔹 Charger le token depuis un fichier
+token_path = "/home/ubuntu/DST_Airlines/data/token/access_token.txt"
+if not os.path.exists(token_path):
+    print(f"❌ Token introuvable à : {token_path}")
+    sys.exit(1)
+
+with open(token_path, "r") as f:
+    access_token = f.read().strip()
 
 # Parameters
 origin = "FRA"
 destination = "CDG"
-date = "2025-05-05"
+# date = "2025-05-05"
 recordLimit = 100 # nombre de résultats rendus par requête (max=100)
 recordOffset = 0 # initialisation du nombre de résultats skipped lors de la reqûete
 totalRequests=1
+
+# 🔹 Fichier de sortie
+output_path = f"/home/ubuntu/DST_Airlines/data/lufthansa/flights_{date}.json"
+os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
 # URL de l'API "Customer Flight Information by Route"
 url = f"https://api.lufthansa.com/v1/operations/customerflightinformation/route/{origin}/{destination}/{date}"
 
 # En-têtes de la requête, incluant l'authentification
 headers = {
-    'Authorization': f'Bearer {API_KEY}',
+    'Authorization': f'Bearer {access_token}',
     'Accept': 'application/json'
 }
 
@@ -63,7 +82,7 @@ while True:
         
         
         
-with open("/home/ubuntu/DST_Airlines/data/lufthansa/flights.json", "w", encoding="utf-8") as json_file:
+with open(output_path, "w", encoding="utf-8") as json_file:
     json.dump(flights, json_file, indent=4, ensure_ascii=False)
 print(f"Nombre total de vols récupérés : {len(flights)}")
 print("Les vols ont été enregistrés dans 'flights.json'.")

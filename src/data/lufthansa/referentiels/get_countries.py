@@ -1,15 +1,22 @@
 import requests
 import json
 import time
+import os
 
-# Token d'accès obtenu précédemment
-API_KEY = 'wa6t9sd254b7cny79ta9ssb8'
+# 🔹 Charger le token depuis un fichier
+token_path = "/home/ubuntu/DST_Airlines/data/token/access_token.txt"
+if not os.path.exists(token_path):
+    print(f"❌ Token introuvable à : {token_path}")
+    sys.exit(1)
+
+with open(token_path, "r") as f:
+    access_token = f.read().strip()
 
 url = "https://api.lufthansa.com/v1/mds-references/countries"
 
 # En-têtes de la requête, incluant l'authentification
 headers = {
-    'Authorization': f'Bearer {API_KEY}',
+    'Authorization': f'Bearer {access_token}',
     'Accept': 'application/json'
 }
 
