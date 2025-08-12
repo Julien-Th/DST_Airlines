@@ -15,12 +15,14 @@ if len(sys.argv) < 2:
 date = sys.argv[1]  # Exemple : 2025-06-25
 
 # 🔹 Charger le token depuis un fichier
-token_path = "/home/ubuntu/DST_Airlines/data/token/access_token.txt"
-if not os.path.exists(token_path):
-    print(f"❌ Token introuvable à : {token_path}")
+token_storage_path = sys.argv[2]
+# token_storage_path = "/home/ubuntu/DST_Airlines/data/token/"
+token_file_path = os.path.join(token_storage_path, "access_token.txt")
+if not os.path.exists(token_file_path):
+    print(f"❌ Token introuvable à : {token_file_path}")
     sys.exit(1)
 
-with open(token_path, "r") as f:
+with open(token_file_path, "r") as f:
     access_token = f.read().strip()
 
 # 🔹 Paramètres
@@ -30,8 +32,10 @@ recordLimit = 100
 maxRequestsPerHour = 1000
 
 # 🔹 Fichier de sortie
-output_path = f"/home/ubuntu/DST_Airlines/data/lufthansa/all_flights_{date}.json"
-os.makedirs(os.path.dirname(output_path), exist_ok=True)
+output_path = sys.argv[3]
+output_file = os.path.join(output_path, f"flights_{date}.json")
+# output_file = f"/home/ubuntu/DST_Airlines/data/lufthansa/all_flights_{date}.json"
+os.makedirs(os.path.dirname(output_file), exist_ok=True)
 
 # 🔹 En-têtes HTTP
 headers = {
@@ -105,10 +109,10 @@ for origin, destination in product(destinations, origins):
         all_flights.extend(fetch_flights_for_route(origin, destination, date, headers))
 
 # 🔹 Sauvegarde JSON
-with open(output_path, "w", encoding="utf-8") as f:
+with open(output_file, "w", encoding="utf-8") as f:
     json.dump(all_flights, f, indent=4, ensure_ascii=False)
 
-print(f"✅ Total {len(all_flights)} vols enregistrés dans {output_path}")
+print(f"✅ Total {len(all_flights)} vols enregistrés dans {output_file}")
 
 # 🔹 Post-traitement : DataFrame + retard
 def compute_delay_minutes(scheduled_date, scheduled_time, actual_date, actual_time):
@@ -169,6 +173,6 @@ for flight in all_flights:
 
 # 🔹 Export CSV
 df = pd.DataFrame(records)
-csv_output_path = output_path.replace(".json", ".csv")
+csv_output_path = output_file.replace(".json", ".csv")
 df.to_csv(csv_output_path, index=False, encoding="utf-8")
 print(f"✅ CSV exporté vers : {csv_output_path}")

@@ -38,3 +38,7 @@ password : ```airflow```
 Créer un fichier .py dans le dossier airflow/dags
 Patienter quelques minutes pour que Airflow le prenne en compte automatiquement et qu'il apparaisse dans la liste des dags sur l'interface
 
+### Lors d'une reconnexion (sur une autre adresse IP?), relancer les commandes
+cd airflow
+docker-compose up airflow-init
+docker-compose up -d

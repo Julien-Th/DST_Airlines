@@ -12,13 +12,17 @@ with DAG(
     }
 ) as my_dag:
 
+    task0 = BashOperator(
+        bash_command="ls -lah /opt/airflow/dags",
+        task_id="ls_dags"
+    )
     task1 = BashOperator(
         bash_command="ls -lah /opt/src",
         task_id="ls_src"
     )
     task2 = BashOperator(
-        bash_command="sh /opt/src/launch_flux.sh /opt /opt/src/ /opt/data/ /opt/data/",
+        bash_command="sh /opt/src/launch_flux.sh /opt /opt/src/ /opt/data/token/ /opt/data/lufthansa/",
         task_id="get_API_flux"
     )
 
-    task1 >> task2
+    task0 >> task1 >> task2

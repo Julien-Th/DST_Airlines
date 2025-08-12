@@ -12,12 +12,14 @@ if len(sys.argv) < 2:
 date = sys.argv[1]  # Exemple : 2025-06-25
 
 # 🔹 Charger le token depuis un fichier
-token_path = "/home/ubuntu/DST_Airlines/data/token/access_token.txt"
-if not os.path.exists(token_path):
-    print(f"❌ Token introuvable à : {token_path}")
+token_storage_path = sys.argv[2]
+# token_storage_path = "/home/ubuntu/DST_Airlines/data/token/"
+token_file_path = os.path.join(token_storage_path, "access_token.txt")
+if not os.path.exists(token_file_path):
+    print(f"❌ Token introuvable à : {token_file_path}")
     sys.exit(1)
 
-with open(token_path, "r") as f:
+with open(token_file_path, "r") as f:
     access_token = f.read().strip()
 
 # Parameters
@@ -29,8 +31,10 @@ recordOffset = 0 # initialisation du nombre de résultats skipped lors de la req
 totalRequests=1
 
 # 🔹 Fichier de sortie
-output_path = f"/home/ubuntu/DST_Airlines/data/lufthansa/flights_{date}.json"
-os.makedirs(os.path.dirname(output_path), exist_ok=True)
+output_path = sys.argv[3]
+output_file = os.path.join(output_path, f"flights_{date}.json")
+# output_file = f"/home/ubuntu/DST_Airlines/data/lufthansa/flights_{date}.json"
+os.makedirs(os.path.dirname(output_file), exist_ok=True)
 
 # URL de l'API "Customer Flight Information by Route"
 url = f"https://api.lufthansa.com/v1/operations/customerflightinformation/route/{origin}/{destination}/{date}"
@@ -82,7 +86,7 @@ while True:
         
         
         
-with open(output_path, "w", encoding="utf-8") as json_file:
+with open(output_file, "w", encoding="utf-8") as json_file:
     json.dump(flights, json_file, indent=4, ensure_ascii=False)
 print(f"Nombre total de vols récupérés : {len(flights)}")
 print("Les vols ont été enregistrés dans 'flights.json'.")
