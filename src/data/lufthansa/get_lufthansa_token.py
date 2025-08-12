@@ -1,5 +1,6 @@
 import requests
 import os
+import sys
 
 # URL pour obtenir le token
 token_url = "https://api.lufthansa.com/v1/oauth/token"
@@ -9,7 +10,8 @@ client_id = 'g77yk92xt8yraa6rhmxs8tjsa'
 client_secret = 'zPm6Jg6TjF'
 
 # Chemin de stockage du token
-token_storage_path = "/home/ubuntu/DST_Airlines/data/token/"
+token_storage_path = sys.argv[1]
+# token_storage_path = "/home/ubuntu/DST_Airlines/data/token/"
 token_file_path = os.path.join(token_storage_path, "access_token.txt")
 
 # Paramètres pour la requête
