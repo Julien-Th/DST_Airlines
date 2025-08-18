@@ -12,7 +12,8 @@ cd "$WD_PATH" || exit 1
 
 
 # put current date as yyyy-mm-dd in $date
-date=$(date --date 'next day' '+%Y-%m-%d')
+date=$(date --date 'yesterday' '+%Y-%m-%d')
+# date="2025-08-12"
 
 echo "Launching flux for ${date}"
 
