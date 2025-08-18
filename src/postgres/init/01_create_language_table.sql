@@ -1,6 +1,3 @@
--- Connexion explicite à la base de données airlines_flight_delays
-\c airlines_flight_delays;
-
 -- Supprimer la table language si elle existe déjà
 DROP TABLE IF EXISTS language;
 

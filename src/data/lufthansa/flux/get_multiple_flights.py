@@ -26,8 +26,8 @@ with open(token_file_path, "r") as f:
     access_token = f.read().strip()
 
 # 🔹 Paramètres
-origins = ["CDG", "ORY", "BVA", "MRS", "LYS"]
-destinations = ["FRA", "HHN", "MUC"]
+origins = ["CDG", "ORY", "NCE", "MRS", "LYS","MAD","BCN","AGP","FCO","MXP","VCE","NAP","LHR","LGW","MAN","STN","LTN","BHX","FRA","HNN","MUC"]
+destinations = ["CDG", "ORY", "NCE", "MRS", "LYS","MAD","BCN","AGP","FCO","MXP","VCE","NAP","LHR","LGW","MAN","STN","LTN","BHX","FRA","HNN","MUC"]
 recordLimit = 100
 maxRequestsPerHour = 1000
 
