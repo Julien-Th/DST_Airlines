@@ -95,6 +95,24 @@ def fetch_flights_for_route(origin, destination, date, headers):
 
     return flights
 
+def get_day_period(time_str):
+    """
+    Retourne la période de la journée (Night, Morning, Afternoon, Evening)
+    en fonction de l'heure prévue de départ (Scheduled).
+    """
+    try:
+        hour = datetime.strptime(time_str, "%H:%M").hour
+        if 0 <= hour < 6:
+            return "Night"
+        elif 6 <= hour < 12:
+            return "Morning"
+        elif 12 <= hour < 18:
+            return "Afternoon"
+        else:
+            return "Evening"
+    except Exception:
+        return None
+
 # 🔹 Récupération vols aller/retour
 all_flights = []
 
@@ -138,6 +156,7 @@ for flight in all_flights:
             "DepartureScheduledTime": dep.get("Scheduled", {}).get("Time"),
             "DepartureActualDate": dep.get("Actual", {}).get("Date"),
             "DepartureActualTime": dep.get("Actual", {}).get("Time"),
+            "DepartureDayPeriod": get_day_period(dep.get("Scheduled", {}).get("Time")),
 
             "ArrivalAirport": arr.get("AirportCode"),
             "ArrivalScheduledDate": arr.get("Scheduled", {}).get("Date"),
