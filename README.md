@@ -28,3 +28,9 @@ Steps to get passenger flights data :
 #### Get flux
 
 - execute `sh src/data/lufthansa/launch_flux.sh /home/ubuntu/DST_Airlines/ /home/ubuntu/DST_Airlines/src/data/lufthansa/ /home/ubuntu/DST_Airlines/data/token/ /home/ubuntu/DST_Airlines/data/lufthansa/`
+
+## Our API
+### Launch
+Execute `cd DST_Airlines/src/api;uvicorn main:app --reload`
+### Docs
+http://127.0.0.1:8000/docs
