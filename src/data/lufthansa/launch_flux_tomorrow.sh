@@ -20,7 +20,11 @@ echo "Launching flux for ${date}"
 # Scripts (noms fixes)
 TOKEN_SCRIPT="$SCRIPT_PATH/get_lufthansa_token.py"
 FLIGHT_STATUS_SCRIPT="$SCRIPT_PATH/flux/get_flight_status.py"
+<<<<<<< HEAD
 MULTIPLE_FLIGHTS_SCRIPT="$SCRIPT_PATH/flux/get_multiple_flights_tomorrow.py"
+=======
+MULTIPLE_FLIGHTS_SCRIPT="$SCRIPT_PATH/flux/get_multiple_flights.py"
+>>>>>>> 865eae9c287d5adaaac4bdc305fbc0212c4838ef
 
 # Executions
 # Flight status
