@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-API_URL = "http://127.0.0.1:8000"
+API_URL = "http://fastapi:8000"
 
 st.set_page_config(page_title="DST Airlines", page_icon="✈️")
 st.title("✈️ DST Airlines - Prédiction des Retards")

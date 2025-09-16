@@ -3,18 +3,20 @@ version: "3.9"
 services:
   fastapi:
     build:
-      context: ./src/api
-      dockerfile: Dockerfile.fastapi
+      context: .
+      dockerfile: src/api/Dockerfile.fastapi
     container_name: fastapi_app
     ports:
       - "8000:8000"
+    volumes:
+      - ./models:/app/models   # <-- accès direct au modèle
     networks:
       - app_net
 
   streamlit:
     build:
-      context: ./src/api
-      dockerfile: Dockerfile.streamlit
+      context: .
+      dockerfile: src/api/Dockerfile.streamlit
     container_name: streamlit_app
     ports:
       - "8501:8501"

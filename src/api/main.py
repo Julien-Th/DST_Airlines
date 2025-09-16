@@ -89,10 +89,10 @@ def login(form_data: OAuth2PasswordRequestForm = Depends()):
 @app.get("/flights/tomorrow")
 def get_flights_tomorrow(user: str = Depends(get_current_user)):
     tomorrow = (datetime.utcnow() + timedelta(days=1)).strftime("%Y-%m-%d")
-    base_dir = "/home/ubuntu/DST_Airlines/"
-    script_dir = "/home/ubuntu/DST_Airlines/src/data/lufthansa/"
-    token_dir = "/home/ubuntu/DST_Airlines/data/token/"
-    output_dir = "/home/ubuntu/DST_Airlines/data/lufthansa/"
+    base_dir = "/app/"
+    script_dir = "/app/src/data/lufthansa/"
+    token_dir = "/app/data/token/"
+    output_dir = "/app/data/lufthansa/"
 
     cmd = [
         "sh",
@@ -113,7 +113,7 @@ def get_flights_tomorrow(user: str = Depends(get_current_user)):
 
 @app.post("/predict", response_model=List[PredictionResponse])
 def predict(flights: List[Flight], user: str = Depends(get_current_user)):
-    model_path = "/home/ubuntu/DST_Airlines/models/ML_flight_delay.pkl"
+    model_path = "/app/models/ML_flight_delay.pkl"
     if not os.path.exists(model_path):
         raise HTTPException(status_code=500, detail="Model not found")
 

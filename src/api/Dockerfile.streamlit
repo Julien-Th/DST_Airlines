@@ -6,5 +6,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
+COPY src/api/ /app/
+
 
 CMD ["streamlit", "run", "ihm.py", "--server.port=8501", "--server.address=0.0.0.0"]
