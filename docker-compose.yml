@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  fastapi:
+    build:
+      context: .
+      dockerfile: src/api/Dockerfile.fastapi
+    container_name: fastapi_app
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/app/models   # <-- accès direct au modèle
+    networks:
+      - app_net
+
+  streamlit:
+    build:
+      context: .
+      dockerfile: src/api/Dockerfile.streamlit
+    container_name: streamlit_app
+    ports:
+      - "8501:8501"
+    depends_on:
+      - fastapi
+    networks:
+      - app_net
+
+networks:
+  app_net:
+    driver: bridge
