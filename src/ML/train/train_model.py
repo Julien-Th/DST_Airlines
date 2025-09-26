@@ -64,18 +64,18 @@ if __name__ == "__main__":
         # Évaluation
         y_pred = pipe.predict(X_test)
         acc = accuracy_score(y_test, y_pred)
-        print(f"🔎 {name} Accuracy: {acc:.4f}")
+        print(f"{name} Accuracy: {acc:.4f}")
 
         if acc > best_acc:
             best_acc = acc
             best_model = pipe
             best_name = name
 
-    print(f"\n✅ Meilleur modèle : {best_name} (accuracy={best_acc:.4f})")
-    print("\nClassification report:\n", classification_report(y_test, best_model.predict(X_test)))
+    print(f"Meilleur modèle : {best_name} (accuracy={best_acc:.4f})")
+    print("Classification report:\n", classification_report(y_test, best_model.predict(X_test)))
 
     # Sauvegarde du pipeline complet
     with open(output_model, "wb") as f:
         pickle.dump(best_model, f)
 
-    print(f"📂 Modèle sauvegardé dans : {output_model}")
+    print(f"Modèle sauvegardé dans : {output_model}")

@@ -20,7 +20,7 @@ def load_csvs_in_range(folder_path, start_date, end_date):
                     df = pd.read_csv(os.path.join(folder_path, file))
                     dfs.append(df)
             except Exception as e:
-                print(f"⚠️ Erreur avec le fichier {file} : {e}")
+                print(f"Erreur avec le fichier {file} : {e}")
 
     if not dfs:
         raise ValueError("Aucun fichier valide trouvé dans l’intervalle donné.")
@@ -46,4 +46,4 @@ if __name__ == "__main__":
     df = add_features(df)
 
     df.to_csv(output_csv, index=False)
-    print(f"✅ Fichier enrichi sauvegardé : {output_csv}")
+    print(f"Fichier enrichi sauvegardé : {output_csv}")

@@ -1,4 +1,4 @@
-# ✈️ Flight Delay Prediction  
+# Flight Delay Prediction  
 
 Ce projet permet de :  
 1. **Préparer les données** (`create_features.py`) → ajout de variables utiles.  
@@ -7,7 +7,7 @@ Ce projet permet de :
 
 ---
 
-## 📂 1. Feature Engineering (`create_features.py`)
+## 1. Feature Engineering (`create_features.py`)
 
 Ce script :  
 - Combine plusieurs fichiers CSV contenant des vols (nommés `flights_YYYY-MM-DD.csv`).  
@@ -16,7 +16,7 @@ Ce script :
   - `ArrivalDelay` : booléen (`True` si `ArrivalDelayMinutes > 0`).   
 - Sauvegarde le dataset enrichi dans un nouveau CSV.  
 
-### 🛠️ Utilisation
+### Utilisation
 ```bash
 python3 create_features.py <input_folder> <start_date> <end_date> <output_csv>
 ```
@@ -25,14 +25,14 @@ python3 create_features.py <input_folder> <start_date> <end_date> <output_csv>
 - `<start_date>` et `<end_date>` : bornes de l’intervalle (format `YYYY-MM-DD`).  
 - `<output_csv>` : chemin de sortie du CSV enrichi.  
 
-### 📌 Exemple
+### Exemple
 ```bash
 python3 feature_engineering/create_features.py /home/ubuntu/DST_Airlines/data/lufthansa 2025-08-12 2025-08-21 /home/ubuntu/DST_Airlines/data/train/flights_train_202508.csv
 ```
 
 ---
 
-## 📂 2. Training (`train_model.py`)
+## 2. Training (`train_model.py`)
 
 Ce script :  
 - Charge le CSV enrichi.  
@@ -41,7 +41,7 @@ Ce script :
 - Sélectionne le meilleur modèle.  
 - Sauvegarde le modèle **complet (pipeline = prétraitement + modèle)** en `.pkl`.  
 
-### 🛠️ Utilisation
+### Utilisation
 ```bash
 python3 train_model.py <input_csv> <output_model.pkl>
 ```
@@ -49,14 +49,14 @@ python3 train_model.py <input_csv> <output_model.pkl>
 - `<input_csv>` : CSV enrichi (sortie de `feature_engineering.py`).  
 - `<output_model.pkl>` : chemin du fichier modèle sauvegardé.  
 
-### 📌 Exemple
+### Exemple
 ```bash
 python3 train_model.py /home/ubuntu/DST_Airlines/data/train/flights_train_202508.csv /home/ubuntu/DST_Airlines/models/ML_flight_delay.pkl
 ```
 
 ---
 
-## 📂 3. Prediction (`predict_model.py`)
+## 3. Prediction (`predict_model.py`)
 
 Ce script :  
 - Charge le modèle sauvegardé (`.pkl`).  
@@ -65,7 +65,7 @@ Ce script :
 - Ajoute une colonne `ArrivalDelay_Pred` (prédiction du retard).  
 - Sauvegarde le résultat dans un CSV.  
 
-### 🛠️ Utilisation
+### Utilisation
 ```bash
 python3 predict_model.py <input_model.pkl> <input_csv> <output_csv>
 ```
@@ -75,14 +75,14 @@ python3 predict_model.py <input_model.pkl> <input_csv> <output_csv>
   `DepartureDayPeriod, DepartureAirport, ArrivalAirport, AirlineID, FlightNumber, AircraftCode`).  
 - `<output_csv>` : fichier CSV avec les prédictions ajoutées.  
 
-### 📌 Exemple
+### Exemple
 ```bash
 python3 predict_model.py /home/ubuntu/DST_Airlines/models/ML_flight_delay.pkl /home/ubuntu/DST_Airlines/data/predict/flights_2025-08-22.csv /home/ubuntu/DST_Airlines/data/predict/predicted_flights_2025-08-22.csv
 ```
 
 ---
 
-## 🔑 Résumé du workflow
+## Résumé du workflow
 
 1. **Préparer les données**  
    ```bash
