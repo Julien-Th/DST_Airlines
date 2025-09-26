@@ -34,7 +34,7 @@ http://localhost:8502/
 │   ├── plugins
 │   ├── airflow.sh
 │   └── docker-compose.yaml
-├── data
+├── data -- gitignored on github
 │   ├── lufthansa
 │   │   ├── flights_2025-09-22.csv
 │   │   └── flights_2025-09-22.json
@@ -76,6 +76,23 @@ http://localhost:8502/
 │   │   └── use_examples.sh
 │   ├── data
 │   │   └── lufthansa
+│   │       ├── flux
+│   │       │   ├── get_flight_status.py
+│   │       │   ├── get_multiple_flights.py
+│   │       │   └── get_multiple_flights_tomorrow.py
+│   │       ├── referentiels
+│   │       │   ├── get_aircrafts.py
+│   │       │   ├── get_airlines.py
+│   │       │   ├── get_airports.py
+│   │       │   ├── get_cities.py
+│   │       │   └── get_countries.py
+│   │       ├── check_data_csv_export.py
+│   │       ├── get_lufthansa_token.py
+│   │       ├── launch_flux.sh
+│   │       ├── launch_flux_tomorrow.sh
+│   │       ├── launch_referentiels.sh
+│   │       ├── parse_json_airlines.py
+│   │       └── parse_json_airports.py
 │   ├── postgres
 │   │   ├── init
 │   │   ├── docker-compose.yaml

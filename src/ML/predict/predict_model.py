@@ -23,7 +23,7 @@ if __name__ == "__main__":
                 "AirlineID", "FlightNumber", "AircraftCode"]
 
     if not all(col in df_new.columns for col in features):
-        raise ValueError(f"⚠️ Le fichier doit contenir au minimum les colonnes : {features}")
+        raise ValueError(f"Le fichier doit contenir au minimum les colonnes : {features}")
 
     X_new = df_new[features]
 
@@ -35,4 +35,4 @@ if __name__ == "__main__":
 
     # Sauvegarde
     df_new.to_csv(output_csv, index=False)
-    print(f"✅ Prédictions sauvegardées dans : {output_csv}")
+    print(f"Prédictions sauvegardées dans : {output_csv}")

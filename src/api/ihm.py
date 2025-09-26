@@ -4,7 +4,7 @@ import requests
 API_URL = "http://fastapi:8000"
 
 st.set_page_config(page_title="DST Airlines", page_icon="✈️")
-st.title("✈️ DST Airlines - Prédiction des Retards")
+st.title("✈️ DST Airlines - Prédiction des Retards ✈️")
 
 # -----------------------------
 # Login
